@@ -1,0 +1,55 @@
+Apple Mighty Mouse, wired (05ac:0304)
+
+VID:PID    05AC:0304
+Type       Real device
+Source     https://ratatoskr.run/qemu-devel/2026/07/17280285/t (QEMU patch "Apple Magic Keyboard and
+           Mighty Mouse emulators"; the author says the descriptors were captured from real
+           hardware)
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 8 bytes
+
+
+==== Interface 0 report descriptor (67 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 03         Usage Maximum (Button 3)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 03         Report Count (3)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+95 01         Report Count (1)
+75 05         Report Size (5)
+81 03         Input (Const,Var,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 03         Report Count (3)
+81 06         Input (Data,Var,Rel)
+05 0C         Usage Page (Consumer)
+0A 38 02      Usage (AC Pan)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 01         Report Count (1)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 09 01 A1 00 05 09 19 01 29 03
+15 00 25 01 95 03 75 01 81 02 95 01 75 05 81 03
+05 01 09 30 09 31 09 38 15 81 25 7F 75 08 95 03
+81 06 05 0C 0A 38 02 15 81 25 7F 75 08 95 01 81
+06 C0 C0

@@ -1,0 +1,191 @@
+Keychron Q6 with custom QMK firmware, KEYBOARD_SHARED_EP (QMK issue #19472)
+
+VID:PID    3434:0161
+Type       Real device
+Source     https://github.com/qmk/qmk_firmware/issues/19472
+
+Notes
+  - Built by the reporter with KEYBOARD_SHARED_EP=yes to make media keys work through a TESmart KVM:
+    everything (keyboard report 1, mouse, system, consumer, NKRO report 6) on interface 0. Expect
+    NKRO off and keys in report 1.
+  - Two keyboard reports of different sizes on one interface (9-byte report 1 and 32-byte NKRO
+    report 6). A host that keeps one report size for the keyboard must take it from the right
+    report.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 64 bytes
+  Interface 1: class 03 (HID), subclass 00, protocol 00, endpoint max packet 8 bytes
+  The source gave only the report descriptors. Subclass and protocol were inferred from them (a
+  descriptor that starts with a Keyboard or Mouse collection and has no report IDs was taken as a
+  boot interface), and endpoint sizes were assumed.
+
+
+==== Interface 0 report descriptor (248 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 01       Report ID (1)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 08       Report Count (8)
+75 01       Report Size (1)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 01       Input (Const,Array,Abs)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 FF       Usage Maximum (Key 0xFF)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+95 06       Report Count (6)
+75 08       Report Size (8)
+81 00       Input (Data,Array,Abs)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 05       Usage Maximum (Kana)
+95 05       Report Count (5)
+75 01       Report Size (1)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 03       Report Size (3)
+91 01       Output (Const,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+85 02       Report ID (2)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 08         Usage Maximum (Button 8)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 08         Report Count (8)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+95 02         Report Count (2)
+75 08         Report Size (8)
+81 06         Input (Data,Var,Rel)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+95 01         Report Count (1)
+75 08         Report Size (8)
+81 06         Input (Data,Var,Rel)
+05 0C         Usage Page (Consumer)
+0A 38 02      Usage (AC Pan)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+95 01         Report Count (1)
+75 08         Report Size (8)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 80     Usage (System Control)
+A1 01     Collection (Application)
+85 03       Report ID (3)
+19 01       Usage Minimum (Pointer)
+2A B7 00    Usage Maximum (0xB7)
+15 01       Logical Minimum (1)
+26 B7 00    Logical Maximum (183)
+95 01       Report Count (1)
+75 10       Report Size (16)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 04       Report ID (4)
+19 01       Usage Minimum (Consumer Control)
+2A A0 02    Usage Maximum (0x2A0)
+15 01       Logical Minimum (1)
+26 A0 02    Logical Maximum (672)
+95 01       Report Count (1)
+75 10       Report Size (16)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 06       Report ID (6)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 08       Report Count (8)
+75 01       Report Size (1)
+81 02       Input (Data,Var,Abs)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 EF       Usage Maximum (Key 0xEF)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 F0       Report Count (240)
+75 01       Report Size (1)
+81 02       Input (Data,Var,Abs)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 05       Usage Maximum (Kana)
+95 05       Report Count (5)
+75 01       Report Size (1)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 03       Report Size (3)
+91 01       Output (Const,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 85 01 05 07 19 E0 29 E7 15 00
+25 01 95 08 75 01 81 02 95 01 75 08 81 01 05 07
+19 00 29 FF 15 00 26 FF 00 95 06 75 08 81 00 05
+08 19 01 29 05 95 05 75 01 91 02 95 01 75 03 91
+01 C0 05 01 09 02 A1 01 85 02 09 01 A1 00 05 09
+19 01 29 08 15 00 25 01 95 08 75 01 81 02 05 01
+09 30 09 31 15 81 25 7F 95 02 75 08 81 06 09 38
+15 81 25 7F 95 01 75 08 81 06 05 0C 0A 38 02 15
+81 25 7F 95 01 75 08 81 06 C0 C0 05 01 09 80 A1
+01 85 03 19 01 2A B7 00 15 01 26 B7 00 95 01 75
+10 81 00 C0 05 0C 09 01 A1 01 85 04 19 01 2A A0
+02 15 01 26 A0 02 95 01 75 10 81 00 C0 05 01 09
+06 A1 01 85 06 05 07 19 E0 29 E7 15 00 25 01 95
+08 75 01 81 02 05 07 19 00 29 EF 15 00 25 01 95
+F0 75 01 81 02 05 08 19 01 29 05 95 05 75 01 91
+02 95 01 75 03 91 01 C0
+
+
+==== Interface 1 report descriptor (34 bytes) ====
+
+06 60 FF  Usage Page (Vendor-defined 0xFF60)
+09 61     Usage (0x61)
+A1 01     Collection (Application)
+09 62       Usage (0x62)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+95 20       Report Count (32)
+75 08       Report Size (8)
+81 02       Input (Data,Var,Abs)
+09 63       Usage (0x63)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+95 20       Report Count (32)
+75 08       Report Size (8)
+91 02       Output (Data,Var,Abs)
+C0        End Collection
+
+Hex:
+06 60 FF 09 61 A1 01 09 62 15 00 26 FF 00 95 20
+75 08 81 02 09 63 15 00 26 FF 00 95 20 75 08 91
+02 C0

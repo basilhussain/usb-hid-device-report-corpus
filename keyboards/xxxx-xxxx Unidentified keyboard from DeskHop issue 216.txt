@@ -1,0 +1,159 @@
+Keyboard from DeskHop issue "Keyboard keys alphabetically shifted" (interfaces 2-4)
+
+VID:PID    xxxx:xxxx (unknown)
+Type       Real device
+Source     https://github.com/hrvach/deskhop/issues/216
+
+Notes
+  - Its keyboard collection is not the usual layout; DeskHop decoded keys one position off.
+
+Interfaces
+  Interface 2: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
+  Interface 3: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+  Interface 4: class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 8 bytes
+  The source gave only the report descriptors. Subclass and protocol were inferred from them (a
+  descriptor that starts with a Keyboard or Mouse collection and has no report IDs was taken as a
+  boot interface), and endpoint sizes were assumed.
+
+
+==== Interface 2 report descriptor (55 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 08       Usage Maximum (Do Not Disturb)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+91 02       Output (Data,Var,Abs)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+81 02       Input (Data,Var,Abs)
+75 08       Report Size (8)
+95 07       Report Count (7)
+81 01       Input (Const,Array,Abs)
+75 01       Report Size (1)
+95 04       Report Count (4)
+81 01       Input (Const,Array,Abs)
+19 04       Usage Minimum (a)
+29 DD       Usage Maximum (Key 0xDD)
+95 DA       Report Count (218)
+81 02       Input (Data,Var,Abs)
+95 02       Report Count (2)
+81 01       Input (Const,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 08 19 01 29 08 15 00 25 01
+75 01 95 08 91 02 05 07 19 E0 29 E7 81 02 75 08
+95 07 81 01 75 01 95 04 81 01 19 04 29 DD 95 DA
+81 02 95 02 81 01 C0
+
+
+==== Interface 3 report descriptor (106 bytes) ====
+
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 04       Report ID (4)
+15 00       Logical Minimum (0)
+26 FF 03    Logical Maximum (1023)
+19 00       Usage Minimum (0x00)
+2A FF 03    Usage Maximum (0x3FF)
+95 04       Report Count (4)
+75 10       Report Size (16)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 80     Usage (System Control)
+A1 01     Collection (Application)
+85 05       Report ID (5)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+19 00       Usage Minimum (0x00)
+29 FF       Usage Maximum (0xFF)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+85 01         Report ID (1)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 08         Usage Maximum (Button 8)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+75 01         Report Size (1)
+95 08         Report Count (8)
+81 02         Input (Data,Var,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 03         Report Count (3)
+81 06         Input (Data,Var,Rel)
+05 0C         Usage Page (Consumer)
+0A 38 02      Usage (AC Pan)
+95 01         Report Count (1)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 0C 09 01 A1 01 85 04 15 00 26 FF 03 19 00 2A
+FF 03 95 04 75 10 81 00 C0 05 01 09 80 A1 01 85
+05 15 00 26 FF 00 19 00 29 FF 95 01 75 08 81 00
+C0 05 01 09 02 A1 01 09 01 A1 00 85 01 05 09 19
+01 29 08 15 00 25 01 75 01 95 08 81 02 05 01 09
+30 09 31 09 38 15 81 25 7F 75 08 95 03 81 06 05
+0C 0A 38 02 95 01 81 06 C0 C0
+
+
+==== Interface 4 report descriptor (58 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 08         Usage Maximum (Button 8)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 08         Report Count (8)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+16 00 00      Logical Minimum (0)
+26 FF 7F      Logical Maximum (32767)
+75 10         Report Size (16)
+95 02         Report Count (2)
+81 02         Input (Data,Var,Abs)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 01         Report Count (1)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 09 01 A1 00 05 09 19 01 29 08
+15 00 25 01 95 08 75 01 81 02 05 01 09 30 09 31
+16 00 00 26 FF 7F 75 10 95 02 81 02 09 38 15 81
+25 7F 75 08 95 01 81 06 C0 C0

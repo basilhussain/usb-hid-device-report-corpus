@@ -1,0 +1,131 @@
+Apple Pro Mouse M5769 (05ac:0302), one button
+
+VID:PID    05AC:0302
+Type       Real device
+Source     Big Mess o' Wires: dumped from the device, 2026 (exact bytes, real reports)
+
+Notes
+  - Boot mouse with a 3-byte report declared and 8-byte endpoint; one button.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 8 bytes
+
+
+==== Configuration descriptor (34 bytes) ====
+
+09 02 22 00 01 01 00 A0 32      Configuration 1: total length 34, 1 interface, bus-powered, remote wakeup, max power 100 mA
+  09 04 00 00 01 03 01 02 00    Interface 0: 1 endpoint, class 03 (HID), subclass 01 (boot), protocol 02 (mouse)
+    09 21 10 01 00 01 22 32 00  HID 1.10, country code 0 (not localized), report descriptor 50 bytes
+    07 05 81 03 08 00 0A        Endpoint 81 IN, interrupt, max packet 8, interval 10
+
+Hex:
+09 02 22 00 01 01 00 A0 32 09 04 00 00 01 03 01
+02 00 09 21 10 01 00 01 22 32 00 07 05 81 03 08
+00 0A
+
+
+==== Interface 0 report descriptor (50 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+05 09       Usage Page (Button)
+19 01       Usage Minimum (Button 1)
+29 01       Usage Maximum (Button 1)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 01       Report Count (1)
+75 01       Report Size (1)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 07       Report Size (7)
+81 03       Input (Const,Var,Abs)
+05 01       Usage Page (Generic Desktop)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+09 30         Usage (X)
+09 31         Usage (Y)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 02         Report Count (2)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 05 09 19 01 29 01 15 00 25 01
+95 01 75 01 81 02 95 01 75 07 81 03 05 01 09 01
+A1 00 09 30 09 31 15 81 25 7F 75 08 95 02 81 06
+C0 C0
+
+
+==== Sample input reports (recorded from the device, in order) ====
+
+Interface 0: 00 07 FC
+Interface 0: 00 0B FB
+Interface 0: 00 0F FD
+Interface 0: 00 15 F9
+Interface 0: 00 17 FA
+Interface 0: 00 10 F9
+Interface 0: 00 11 F8
+Interface 0: 00 0D F7
+Interface 0: 00 0B F6
+Interface 0: 00 FB F1
+Interface 0: 00 FC F2
+Interface 0: 00 F6 F8
+Interface 0: 00 F3 F8
+Interface 0: 00 EE FB
+Interface 0: 00 F1 FE
+Interface 0: 00 F1 FF
+Interface 0: 00 F4 07
+Interface 0: 00 F5 05
+Interface 0: 00 F4 06
+Interface 0: 00 F6 09
+Interface 0: 00 F8 0B
+Interface 0: 00 F9 0A
+Interface 0: 00 F9 0B
+Interface 0: 00 FA 0E
+Interface 0: 00 FC 0D
+Interface 0: 00 06 0A
+Interface 0: 00 05 08
+Interface 0: 00 08 08
+Interface 0: 00 09 07
+Interface 0: 00 0A 04
+Interface 0: 00 0C 05
+Interface 0: 00 0F 03
+Interface 0: 00 10 FE
+Interface 0: 00 0E FC
+Interface 0: 00 FE EF
+Interface 0: 00 FB F0
+Interface 0: 00 F4 EF
+Interface 0: 00 F6 F2
+Interface 0: 00 F2 F3
+Interface 0: 00 F1 F4
+Interface 0: 00 EF F5
+Interface 0: 00 EE F5
+Interface 0: 00 ED F7
+Interface 0: 00 EF FD
+Interface 0: 00 EF 04
+Interface 0: 00 F2 04
+Interface 0: 00 F7 07
+Interface 0: 00 F5 08
+Interface 0: 00 FA 0C
+Interface 0: 01 00 00
+Interface 0: 00 FC EE
+Interface 0: 00 03 0F
+Interface 0: 00 04 10
+Interface 0: 00 00 12
+Interface 0: 00 01 11
+Interface 0: 00 02 14
+Interface 0: 00 03 15
+Interface 0: 00 00 13
+Interface 0: 00 03 17
+Interface 0: 00 02 1B
+Interface 0: 00 02 18
+Interface 0: 00 FF 17
+Interface 0: 00 FE 12
+Interface 0: 00 FD 14
+Interface 0: 00 00 ED
+Interface 0: 01 00 01
+Interface 0: 00 0E 02

@@ -1,0 +1,128 @@
+TMK keyboard (Hasu converters and controllers), NKRO on
+
+VID:PID    FEED:CAFE (TMK's default placeholder)
+Type       Generated from firmware source code (not dumped from a device)
+Source     https://github.com/tmk/tmk_keyboard/blob/master/tmk_core/protocol/lufa/descriptor.c
+
+Notes
+  - Generated from the TMK source with MOUSE_ENABLE, EXTRAKEY_ENABLE, NKRO_ENABLE.
+  - TMK puts an NKRO bitmap directly in the boot keyboard interface: in report protocol it sends
+    32-byte bitmap reports there; in boot protocol it sends 8-byte boot reports.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 32 bytes
+  Interface 1: class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 8 bytes
+
+
+==== Interface 0 report descriptor (57 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 08       Report Count (8)
+75 01       Report Size (1)
+81 02       Input (Data,Var,Abs)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 05       Usage Maximum (Kana)
+95 05       Report Count (5)
+75 01       Report Size (1)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 03       Report Size (3)
+91 01       Output (Const,Array,Abs)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 F7       Usage Maximum (Key 0xF7)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 F8       Report Count (248)
+75 01       Report Size (1)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 07 19 E0 29 E7 15 00 25 01
+95 08 75 01 81 02 05 08 19 01 29 05 95 05 75 01
+91 02 95 01 75 03 91 01 05 07 19 00 29 F7 15 00
+25 01 95 F8 75 01 81 02 C0
+
+
+==== Interface 1 report descriptor (127 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+85 02         Report ID (2)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 08         Usage Maximum (Button 8)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 08         Report Count (8)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+95 02         Report Count (2)
+75 08         Report Size (8)
+81 06         Input (Data,Var,Rel)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+95 01         Report Count (1)
+75 08         Report Size (8)
+81 06         Input (Data,Var,Rel)
+05 0C         Usage Page (Consumer)
+0A 38 02      Usage (AC Pan)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+95 01         Report Count (1)
+75 08         Report Size (8)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 80     Usage (System Control)
+A1 01     Collection (Application)
+85 03       Report ID (3)
+16 01 00    Logical Minimum (1)
+26 37 00    Logical Maximum (55)
+1A 81 00    Usage Minimum (System Power Down)
+2A B7 00    Usage Maximum (0xB7)
+75 10       Report Size (16)
+95 01       Report Count (1)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 04       Report ID (4)
+16 01 00    Logical Minimum (1)
+26 9C 02    Logical Maximum (668)
+1A 01 00    Usage Minimum (Consumer Control)
+2A 9C 02    Usage Maximum (0x29C)
+75 10       Report Size (16)
+95 01       Report Count (1)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 09 01 A1 00 85 02 05 09 19 01
+29 08 15 00 25 01 95 08 75 01 81 02 05 01 09 30
+09 31 15 81 25 7F 95 02 75 08 81 06 09 38 15 81
+25 7F 95 01 75 08 81 06 05 0C 0A 38 02 15 81 25
+7F 95 01 75 08 81 06 C0 C0 05 01 09 80 A1 01 85
+03 16 01 00 26 37 00 1A 81 00 2A B7 00 75 10 95
+01 81 00 C0 05 0C 09 01 A1 01 85 04 16 01 00 26
+9C 02 1A 01 00 2A 9C 02 75 10 95 01 81 00 C0

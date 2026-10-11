@@ -1,0 +1,93 @@
+QMK keyboard with media keys (EXTRAKEY), NKRO not built
+
+VID:PID    FEED:0001 (QMK's placeholder VID, PID arbitrary)
+Type       Generated from firmware source code (not dumped from a device)
+Source     https://github.com/qmk/qmk_firmware/blob/master/tmk_core/protocol/usb_descriptor.c
+
+Notes
+  - Generated from the QMK source by running it through the C preprocessor with the listed options
+    and evaluating the HID_RI_ macros.
+  - Shared interface 1 holds System Control (report 3) and Consumer Control (report 4).
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
+  Interface 1: class 03 (HID), subclass 00, protocol 00, endpoint max packet 32 bytes
+
+
+==== Interface 0 report descriptor (68 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 08       Report Count (8)
+75 01       Report Size (1)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 01       Input (Const,Array,Abs)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 FF       Usage Maximum (Key 0xFF)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+95 06       Report Count (6)
+75 08       Report Size (8)
+81 00       Input (Data,Array,Abs)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 05       Usage Maximum (Kana)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+95 05       Report Count (5)
+75 01       Report Size (1)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 03       Report Size (3)
+91 01       Output (Const,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 07 19 E0 29 E7 15 00 25 01
+95 08 75 01 81 02 95 01 75 08 81 01 05 07 19 00
+29 FF 15 00 26 FF 00 95 06 75 08 81 00 05 08 19
+01 29 05 15 00 25 01 95 05 75 01 91 02 95 01 75
+03 91 01 C0
+
+
+==== Interface 1 report descriptor (52 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 80     Usage (System Control)
+A1 01     Collection (Application)
+85 03       Report ID (3)
+1A 01 00    Usage Minimum (Pointer)
+2A 8F 00    Usage Maximum (0x8F)
+16 01 00    Logical Minimum (1)
+26 8F 00    Logical Maximum (143)
+95 01       Report Count (1)
+75 10       Report Size (16)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 04       Report ID (4)
+19 01       Usage Minimum (Consumer Control)
+2A A0 02    Usage Maximum (0x2A0)
+15 01       Logical Minimum (1)
+26 A0 02    Logical Maximum (672)
+95 01       Report Count (1)
+75 10       Report Size (16)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 80 A1 01 85 03 1A 01 00 2A 8F 00 16 01
+00 26 8F 00 95 01 75 10 81 00 C0 05 0C 09 01 A1
+01 85 04 19 01 2A A0 02 15 01 26 A0 02 95 01 75
+10 81 00 C0

@@ -1,0 +1,56 @@
+Corsair STRAFE RGB gaming keyboard (1b1c:1b20), BIOS mode (switch on the keyboard)
+
+VID:PID    1B1C:1B20
+Type       Real device
+Source     https://github.com/hrvach/deskhop/issues/45
+
+Notes
+  - In BIOS mode the keyboard has only interface 0, a plain boot keyboard with 8-byte endpoints
+    (lsusb in the same issue).
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
+
+
+==== Interface 0 report descriptor (67 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+75 08       Report Size (8)
+95 01       Report Count (1)
+81 01       Input (Const,Array,Abs)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+2A FF 00    Usage Maximum (Key 0xFF)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+75 08       Report Size (8)
+95 06       Report Count (6)
+81 00       Input (Data,Array,Abs)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 03       Usage Maximum (Scroll Lock)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 03       Report Count (3)
+91 02       Output (Data,Var,Abs)
+75 05       Report Size (5)
+95 01       Report Count (1)
+91 01       Output (Const,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 07 19 E0 29 E7 15 00 25 01
+75 01 95 08 81 02 75 08 95 01 81 01 05 07 19 00
+2A FF 00 15 00 26 FF 00 75 08 95 06 81 00 05 08
+19 01 29 03 25 01 75 01 95 03 91 02 75 05 95 01
+91 01 C0

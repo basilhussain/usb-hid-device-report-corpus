@@ -1,0 +1,158 @@
+SiGma Micro based keyboard 1c4f:0059, with its second interface
+
+VID:PID    1C4F:0059
+Type       Real device
+Source     https://github.com/torvalds/linux/blob/master/drivers/hid/hid-sigmamicro.c
+
+Notes
+  - sm_0059_rdesc as sent by the device (the kernel then changes byte 99). SiGma Micro chips are
+    common in cheap keyboards.
+  - Interface 0 is not given in the source; assumed to be a standard boot keyboard (the HID 1.11
+    example).
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
+  Interface 1: class 03 (HID), subclass 00, protocol 00, endpoint max packet 8 bytes
+
+
+==== Interface 0 report descriptor (63 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 01       Input (Const,Array,Abs)
+95 05       Report Count (5)
+75 01       Report Size (1)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 05       Usage Maximum (Kana)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 03       Report Size (3)
+91 01       Output (Const,Array,Abs)
+95 06       Report Count (6)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+25 65       Logical Maximum (101)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 65       Usage Maximum (Application)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 07 19 E0 29 E7 15 00 25 01
+75 01 95 08 81 02 95 01 75 08 81 01 95 05 75 01
+05 08 19 01 29 05 91 02 95 01 75 03 91 01 95 06
+75 08 15 00 25 65 05 07 19 00 29 65 81 00 C0
+
+
+==== Interface 1 report descriptor (167 bytes) ====
+
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 01       Report ID (1)
+19 00       Usage Minimum (0x00)
+2A 3C 02    Usage Maximum (0x23C)
+15 00       Logical Minimum (0)
+26 3C 02    Logical Maximum (572)
+95 01       Report Count (1)
+75 10       Report Size (16)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 80     Usage (System Control)
+A1 01     Collection (Application)
+85 02       Report ID (2)
+19 81       Usage Minimum (System Power Down)
+29 83       Usage Maximum (System Wake Up)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 03       Report Count (3)
+81 02       Input (Data,Var,Abs)
+95 05       Report Count (5)
+81 01       Input (Const,Array,Abs)
+C0        End Collection
+06 00 FF  Usage Page (Vendor-defined 0xFF00)
+09 01     Usage (0x01)
+A1 01     Collection (Application)
+85 03       Report ID (3)
+1A F1 00    Usage Minimum (0xF1)
+2A F8 00    Usage Maximum (0xF8)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 04       Report ID (4)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 00       Input (Data,Array,Abs)
+95 30       Report Count (48)
+75 01       Report Size (1)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 2F       Usage Maximum ([ {)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 05       Report ID (5)
+95 38       Report Count (56)
+75 01       Report Size (1)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+05 07       Usage Page (Keyboard)
+19 30       Usage Minimum (] })
+29 67       Usage Maximum (Keypad =)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 06       Report ID (6)
+95 38       Report Count (56)
+75 01       Report Size (1)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+05 07       Usage Page (Keyboard)
+19 68       Usage Minimum (F13)
+29 9F       Usage Maximum (Key 0x9F)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+
+Hex:
+05 0C 09 01 A1 01 85 01 19 00 2A 3C 02 15 00 26
+3C 02 95 01 75 10 81 00 C0 05 01 09 80 A1 01 85
+02 19 81 29 83 25 01 75 01 95 03 81 02 95 05 81
+01 C0 06 00 FF 09 01 A1 01 85 03 1A F1 00 2A F8
+00 15 00 25 01 75 01 95 08 81 02 C0 05 01 09 06
+A1 01 85 04 05 07 19 E0 29 E7 15 00 25 01 75 01
+95 08 81 00 95 30 75 01 15 00 25 01 05 07 19 00
+29 2F 81 02 C0 05 01 09 06 A1 01 85 05 95 38 75
+01 15 00 25 01 05 07 19 30 29 67 81 02 C0 05 01
+09 06 A1 01 85 06 95 38 75 01 15 00 25 01 05 07
+19 68 29 9F 81 02 C0

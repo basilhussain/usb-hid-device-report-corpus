@@ -1,0 +1,80 @@
+Arduino Leonardo / Micro / Pro Micro with the Keyboard and Mouse libraries
+
+VID:PID    2341:8036
+Type       Generated from firmware source code (not dumped from a device)
+Source     https://github.com/arduino-libraries/Keyboard/blob/master/src/Keyboard.cpp,
+           https://github.com/arduino-libraries/Mouse/blob/master/src/Mouse.cpp
+
+Notes
+  - Mouse (report ID 1) and keyboard (report ID 2) in one HID interface. The descriptor order
+    depends on static constructor order; mouse first here.
+  - Common in DIY macro pads and adapters. A host that classifies an interface by its first
+    top-level collection sees only the mouse.
+
+Interfaces
+  Interface 2: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+
+
+==== Interface 2 report descriptor (101 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+85 01         Report ID (1)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 03         Usage Maximum (Button 3)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 03         Report Count (3)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+95 01         Report Count (1)
+75 05         Report Size (5)
+81 03         Input (Const,Var,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 03         Report Count (3)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 02       Report ID (2)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 03       Input (Const,Var,Abs)
+95 06       Report Count (6)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+25 73       Logical Maximum (115)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 73       Usage Maximum (F24)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 09 01 A1 00 85 01 05 09 19 01
+29 03 15 00 25 01 95 03 75 01 81 02 95 01 75 05
+81 03 05 01 09 30 09 31 09 38 15 81 25 7F 75 08
+95 03 81 06 C0 C0 05 01 09 06 A1 01 85 02 05 07
+19 E0 29 E7 15 00 25 01 75 01 95 08 81 02 95 01
+75 08 81 03 95 06 75 08 15 00 25 73 05 07 19 00
+29 73 81 00 C0

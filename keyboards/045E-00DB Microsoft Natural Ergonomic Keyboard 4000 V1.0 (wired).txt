@@ -1,0 +1,104 @@
+Microsoft Natural Ergonomic Keyboard 4000 V1.0 (wired)
+
+VID:PID    045E:00DB
+Type       Real device
+Source     https://forums.freebsd.org/threads/keyboard-special-keys-not-being-detected.98361/
+
+Notes
+  - Report descriptors from usbconfig on FreeBSD (bcdDevice 0x0173). Interface 1 is the
+    media/favorites/zoom keys: a Consumer Control collection that also holds a keyboard-page array,
+    report ID 1. Endpoint sizes assumed.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
+  Interface 1: class 03 (HID), subclass 00, protocol 00, endpoint max packet 8 bytes
+
+
+==== Interface 0 report descriptor (60 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 03       Usage Maximum (Scroll Lock)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 03       Report Count (3)
+91 02       Output (Data,Var,Abs)
+09 4B       Usage (Generic Indicator)
+95 01       Report Count (1)
+91 02       Output (Data,Var,Abs)
+95 04       Report Count (4)
+91 01       Output (Const,Array,Abs)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+75 08       Report Size (8)
+95 01       Report Count (1)
+81 01       Input (Const,Array,Abs)
+19 00       Usage Minimum (No event)
+29 91       Usage Maximum (LANG2)
+26 FF 00    Logical Maximum (255)
+95 06       Report Count (6)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 08 19 01 29 03 15 00 25 01
+75 01 95 03 91 02 09 4B 95 01 91 02 95 04 91 01
+05 07 19 E0 29 E7 95 08 81 02 75 08 95 01 81 01
+19 00 29 91 26 FF 00 95 06 81 00 C0
+
+
+==== Interface 1 report descriptor (86 bytes) ====
+
+05 0C           Usage Page (Consumer)
+09 01           Usage (Consumer Control)
+A1 01           Collection (Application)
+85 01             Report ID (1)
+05 0C             Usage Page (Consumer)
+19 00             Usage Minimum (0x00)
+2A FF 03          Usage Maximum (0x3FF)
+95 01             Report Count (1)
+75 10             Report Size (16)
+15 00             Logical Minimum (0)
+27 FF 03 00 00    Logical Maximum (1023)
+81 00             Input (Data,Array,Abs)
+05 07             Usage Page (Keyboard)
+19 00             Usage Minimum (No event)
+29 FF             Usage Maximum (Key 0xFF)
+75 08             Report Size (8)
+26 FF 00          Logical Maximum (255)
+81 00             Input (Data,Array,Abs)
+81 01             Input (Const,Array,Abs)
+06 00 FF          Usage Page (Vendor-defined 0xFF00)
+0A 03 FE          Usage (0xFE03)
+0A 04 FE          Usage (0xFE04)
+95 02             Report Count (2)
+75 01             Report Size (1)
+25 01             Logical Maximum (1)
+81 02             Input (Data,Var,Abs)
+0A 05 FF          Usage (0xFF05)
+95 01             Report Count (1)
+75 05             Report Size (5)
+25 1F             Logical Maximum (31)
+81 02             Input (Data,Var,Abs)
+75 09             Report Size (9)
+81 01             Input (Const,Array,Abs)
+0A 02 FF          Usage (0xFF02)
+26 FF 00          Logical Maximum (255)
+75 08             Report Size (8)
+81 02             Input (Data,Var,Abs)
+C0              End Collection
+
+Hex:
+05 0C 09 01 A1 01 85 01 05 0C 19 00 2A FF 03 95
+01 75 10 15 00 27 FF 03 00 00 81 00 05 07 19 00
+29 FF 75 08 26 FF 00 81 00 81 01 06 00 FF 0A 03
+FE 0A 04 FE 95 02 75 01 25 01 81 02 0A 05 FF 95
+01 75 05 25 1F 81 02 75 09 81 01 0A 02 FF 26 FF
+00 75 08 81 02 C0

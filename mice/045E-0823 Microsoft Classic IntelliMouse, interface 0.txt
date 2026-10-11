@@ -1,0 +1,61 @@
+Microsoft Classic IntelliMouse (045e:0823), interface 0
+
+VID:PID    045E:0823
+Type       Real device
+Source     https://gitlab.freedesktop.org/libinput/libinput/-/issues/183
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 8 bytes
+  The source gave only the report descriptors. Subclass and protocol were inferred from them (a
+  descriptor that starts with a Keyboard or Mouse collection and has no report IDs was taken as a
+  boot interface), and endpoint sizes were assumed.
+
+
+==== Interface 0 report descriptor (79 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+05 01       Usage Page (Generic Desktop)
+09 02       Usage (Mouse)
+A1 02       Collection (Logical)
+85 1A         Report ID (26)
+09 01         Usage (Pointer)
+A1 00         Collection (Physical)
+05 09           Usage Page (Button)
+19 01           Usage Minimum (Button 1)
+29 05           Usage Maximum (Button 5)
+95 05           Report Count (5)
+75 01           Report Size (1)
+15 00           Logical Minimum (0)
+25 01           Logical Maximum (1)
+81 02           Input (Data,Var,Abs)
+75 03           Report Size (3)
+95 01           Report Count (1)
+81 01           Input (Const,Array,Abs)
+05 01           Usage Page (Generic Desktop)
+09 30           Usage (X)
+09 31           Usage (Y)
+95 02           Report Count (2)
+75 10           Report Size (16)
+16 01 80        Logical Minimum (-32767)
+26 FF 7F        Logical Maximum (32767)
+81 06           Input (Data,Var,Rel)
+09 38           Usage (Wheel)
+35 00           Physical Minimum (0)
+45 00           Physical Maximum (0)
+95 01           Report Count (1)
+75 10           Report Size (16)
+16 01 80        Logical Minimum (-32767)
+26 FF 7F        Logical Maximum (32767)
+81 06           Input (Data,Var,Rel)
+C0            End Collection
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 05 01 09 02 A1 02 85 1A 09 01
+A1 00 05 09 19 01 29 05 95 05 75 01 15 00 25 01
+81 02 75 03 95 01 81 01 05 01 09 30 09 31 95 02
+75 10 16 01 80 26 FF 7F 81 06 09 38 35 00 45 00
+95 01 75 10 16 01 80 26 FF 7F 81 06 C0 C0 C0
