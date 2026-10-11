@@ -1,0 +1,93 @@
+Xiaomi MI Wireless Mouse USB dongle 2717:003b (kernel selftest)
+
+VID:PID    2717:003B
+Type       Real device
+Source     https://github.com/torvalds/linux/blob/master/tools/testing/selftests/hid/tests/test_mouse.py
+
+Notes
+  - Mouse (report 1) followed by other collections on the same interface.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 8 bytes
+
+
+==== Interface 0 report descriptor (136 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+85 01       Report ID (1)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+95 05         Report Count (5)
+75 01         Report Size (1)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 05         Usage Maximum (Button 5)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+81 02         Input (Data,Var,Abs)
+95 01         Report Count (1)
+75 03         Report Size (3)
+81 01         Input (Const,Array,Abs)
+75 08         Report Size (8)
+95 01         Report Count (1)
+05 01         Usage Page (Generic Desktop)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+81 06         Input (Data,Var,Rel)
+05 0C         Usage Page (Consumer)
+0A 38 02      Usage (AC Pan)
+95 01         Report Count (1)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+85 02       Report ID (2)
+09 01       Usage (Consumer Control)
+A1 00       Collection (Physical)
+75 0C         Report Size (12)
+95 02         Report Count (2)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+16 01 F8      Logical Minimum (-2047)
+26 FF 07      Logical Maximum (2047)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 03       Report ID (3)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 01       Report Count (1)
+09 CD       Usage (Play/Pause)
+81 06       Input (Data,Var,Rel)
+0A 83 01    Usage (AL Consumer Control Configuration)
+81 06       Input (Data,Var,Rel)
+09 B5       Usage (Scan Next Track)
+81 06       Input (Data,Var,Rel)
+09 B6       Usage (Scan Previous Track)
+81 06       Input (Data,Var,Rel)
+09 EA       Usage (Volume Decrement)
+81 06       Input (Data,Var,Rel)
+09 E9       Usage (Volume Increment)
+81 06       Input (Data,Var,Rel)
+0A 25 02    Usage (AC Forward)
+81 06       Input (Data,Var,Rel)
+0A 24 02    Usage (AC Back)
+81 06       Input (Data,Var,Rel)
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 85 01 09 01 A1 00 95 05 75 01
+05 09 19 01 29 05 15 00 25 01 81 02 95 01 75 03
+81 01 75 08 95 01 05 01 09 38 15 81 25 7F 81 06
+05 0C 0A 38 02 95 01 81 06 C0 85 02 09 01 A1 00
+75 0C 95 02 05 01 09 30 09 31 16 01 F8 26 FF 07
+81 06 C0 C0 05 0C 09 01 A1 01 85 03 15 00 25 01
+75 01 95 01 09 CD 81 06 0A 83 01 81 06 09 B5 81
+06 09 B6 81 06 09 EA 81 06 09 E9 81 06 0A 25 02
+81 06 0A 24 02 81 06 C0

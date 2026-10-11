@@ -1,0 +1,172 @@
+Cherry MW 8C Advanced wireless mouse receiver (046a:0114)
+
+VID:PID    046A:0114
+Type       Real device
+Source     https://github.com/hrvach/deskhop/issues/133
+
+Notes
+  - Receiver with a keyboard interface and a mouse + consumer + system interface. DeskHop issue
+    "Mouse Cherry MW 8C Advanced doesn't work".
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
+  Interface 1: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+  The source gave only the report descriptors. Subclass and protocol were inferred from them (a
+  descriptor that starts with a Keyboard or Mouse collection and has no report IDs was taken as a
+  boot interface), and endpoint sizes were assumed.
+
+
+==== Interface 0 report descriptor (65 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+75 08       Report Size (8)
+95 01       Report Count (1)
+81 01       Input (Const,Array,Abs)
+75 01       Report Size (1)
+95 03       Report Count (3)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 03       Usage Maximum (Scroll Lock)
+91 02       Output (Data,Var,Abs)
+75 01       Report Size (1)
+95 05       Report Count (5)
+91 01       Output (Const,Array,Abs)
+75 08       Report Size (8)
+95 06       Report Count (6)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+2A FF 00    Usage Maximum (Key 0xFF)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 07 19 E0 29 E7 15 00 25 01
+75 01 95 08 81 02 75 08 95 01 81 01 75 01 95 03
+05 08 19 01 29 03 91 02 75 01 95 05 91 01 75 08
+95 06 15 00 26 FF 00 05 07 19 00 2A FF 00 81 00
+C0
+
+
+==== Interface 1 report descriptor (194 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+85 03       Report ID (3)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 05         Usage Maximum (Button 5)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+75 01         Report Size (1)
+95 05         Report Count (5)
+81 02         Input (Data,Var,Abs)
+75 03         Report Size (3)
+95 01         Report Count (1)
+81 01         Input (Const,Array,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+16 01 F8      Logical Minimum (-2047)
+26 FF 07      Logical Maximum (2047)
+75 0C         Report Size (12)
+95 02         Report Count (2)
+81 06         Input (Data,Var,Rel)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 01         Report Count (1)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+05 0C       Usage Page (Consumer)
+15 81       Logical Minimum (-127)
+25 7F       Logical Maximum (127)
+75 08       Report Size (8)
+95 01       Report Count (1)
+0A 38 02    Usage (AC Pan)
+81 06       Input (Data,Var,Rel)
+C0        End Collection
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 01       Report ID (1)
+19 00       Usage Minimum (0x00)
+2A 80 03    Usage Maximum (0x380)
+15 00       Logical Minimum (0)
+26 80 03    Logical Maximum (896)
+75 10       Report Size (16)
+95 01       Report Count (1)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 80     Usage (System Control)
+A1 01     Collection (Application)
+85 02       Report ID (2)
+19 81       Usage Minimum (System Power Down)
+29 83       Usage Maximum (System Wake Up)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 03       Report Count (3)
+81 02       Input (Data,Var,Abs)
+95 05       Report Count (5)
+81 01       Input (Const,Array,Abs)
+C0        End Collection
+06 BC FF  Usage Page (Vendor-defined 0xFFBC)
+09 88     Usage (0x88)
+A1 01     Collection (Application)
+85 04       Report ID (4)
+19 00       Usage Minimum (0x00)
+2A FF 00    Usage Maximum (0xFF)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+75 08       Report Size (8)
+95 01       Report Count (1)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+06 F2 F1  Usage Page (0xF1F2)
+0A F2 F1  Usage (0xF1F2)
+A1 01     Collection (Application)
+85 05       Report ID (5)
+09 00       Usage (0x00)
+95 06       Report Count (6)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+91 02       Output (Data,Var,Abs)
+09 00       Usage (0x00)
+95 05       Report Count (5)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 85 03 09 01 A1 00 05 09 19 01
+29 05 15 00 25 01 75 01 95 05 81 02 75 03 95 01
+81 01 05 01 09 30 09 31 16 01 F8 26 FF 07 75 0C
+95 02 81 06 09 38 15 81 25 7F 75 08 95 01 81 06
+C0 05 0C 15 81 25 7F 75 08 95 01 0A 38 02 81 06
+C0 05 0C 09 01 A1 01 85 01 19 00 2A 80 03 15 00
+26 80 03 75 10 95 01 81 00 C0 05 01 09 80 A1 01
+85 02 19 81 29 83 25 01 75 01 95 03 81 02 95 05
+81 01 C0 06 BC FF 09 88 A1 01 85 04 19 00 2A FF
+00 15 00 26 FF 00 75 08 95 01 81 00 C0 06 F2 F1
+0A F2 F1 A1 01 85 05 09 00 95 06 75 08 15 00 26
+FF 00 91 02 09 00 95 05 75 08 15 00 26 FF 00 81
+02 C0

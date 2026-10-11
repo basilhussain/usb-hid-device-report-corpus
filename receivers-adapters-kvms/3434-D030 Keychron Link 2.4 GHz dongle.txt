@@ -1,0 +1,318 @@
+Keychron Link 2.4 GHz dongle (3434:d030 / d031), e.g. Keychron V1 Max, K15 Max
+
+VID:PID    3434:D030
+Type       Real device
+Source     https://github.com/hrvach/deskhop/issues/211
+
+Notes
+  - Descriptors and real reports from usbhid-dump on a Raspberry Pi (4 interfaces). Interface 2 is a
+    boot keyboard interface, but sends 9-byte reports with report ID 1.
+  - Interface classes are from a Windows dump of the same dongle in the same issue (3 interfaces
+    there: 0 boot mouse, 1 vendor, 2 boot keyboard; interface 1's descriptor is 115 bytes there and
+    167 here, so probably different dongle firmware). Interface 3 (34 bytes) is assumed to be a
+    non-boot interface. libusb warned that the configuration descriptor had 7 bytes left over.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 64 bytes
+  Interface 1: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+  Interface 2: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 32 bytes
+  Interface 3: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+
+
+==== Interface 0 report descriptor (81 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+85 03       Report ID (3)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 05         Usage Maximum (Button 5)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+75 01         Report Size (1)
+95 05         Report Count (5)
+81 02         Input (Data,Var,Abs)
+75 03         Report Size (3)
+95 01         Report Count (1)
+81 01         Input (Const,Array,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+16 01 80      Logical Minimum (-32767)
+26 FF 7F      Logical Maximum (32767)
+75 10         Report Size (16)
+95 02         Report Count (2)
+81 06         Input (Data,Var,Rel)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 01         Report Count (1)
+81 06         Input (Data,Var,Rel)
+05 0C         Usage Page (Consumer)
+0A 38 02      Usage (AC Pan)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 01         Report Count (1)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 85 03 09 01 A1 00 05 09 19 01
+29 05 15 00 25 01 75 01 95 05 81 02 75 03 95 01
+81 01 05 01 09 30 09 31 16 01 80 26 FF 7F 75 10
+95 02 81 06 09 38 15 81 25 7F 75 08 95 01 81 06
+05 0C 0A 38 02 15 81 25 7F 75 08 95 01 81 06 C0
+C0
+
+
+==== Interface 1 report descriptor (167 bytes) ====
+
+05 8C     Usage Page (Barcode Scanner)
+09 01     Usage (0x01)
+A1 01     Collection (Application)
+85 B1       Report ID (177)
+09 02       Usage (0x02)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+75 08       Report Size (8)
+95 20       Report Count (32)
+81 02       Input (Data,Var,Abs)
+85 B2       Report ID (178)
+09 03       Usage (0x03)
+95 20       Report Count (32)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+91 02       Output (Data,Var,Abs)
+85 51       Report ID (81)
+09 04       Usage (0x04)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+19 01       Usage Minimum (0x01)
+2A FF 00    Usage Maximum (0xFF)
+75 08       Report Size (8)
+96 14 00    Report Count (20)
+B1 02       Feature (Data,Var,Abs)
+85 52       Report ID (82)
+09 05       Usage (0x05)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+19 01       Usage Minimum (0x01)
+2A FF 00    Usage Maximum (0xFF)
+75 08       Report Size (8)
+96 40 00    Report Count (64)
+B1 02       Feature (Data,Var,Abs)
+85 53       Report ID (83)
+09 06       Usage (0x06)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+19 01       Usage Minimum (0x01)
+2A 40 00    Usage Maximum (0x40)
+75 08       Report Size (8)
+96 E8 03    Report Count (1000)
+B1 02       Feature (Data,Var,Abs)
+85 54       Report ID (84)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+09 07       Usage (0x07)
+75 08       Report Size (8)
+95 14       Report Count (20)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 04     Usage (Joystick)
+A1 01     Collection (Application)
+85 04       Report ID (4)
+A1 0A       Collection (0x0A)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+09 32         Usage (Z)
+09 33         Usage (Rx)
+09 34         Usage (Ry)
+09 35         Usage (Rz)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+95 06         Report Count (6)
+75 08         Report Size (8)
+81 02         Input (Data,Var,Abs)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 10         Usage Maximum (Button 16)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 10         Report Count (16)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 8C 09 01 A1 01 85 B1 09 02 15 00 26 FF 00 75
+08 95 20 81 02 85 B2 09 03 95 20 75 08 15 00 26
+FF 00 91 02 85 51 09 04 15 00 26 FF 00 19 01 2A
+FF 00 75 08 96 14 00 B1 02 85 52 09 05 15 00 26
+FF 00 19 01 2A FF 00 75 08 96 40 00 B1 02 85 53
+09 06 15 00 26 FF 00 19 01 2A 40 00 75 08 96 E8
+03 B1 02 85 54 15 00 26 FF 00 09 07 75 08 95 14
+81 02 C0 05 01 09 04 A1 01 85 04 A1 0A 05 01 09
+30 09 31 09 32 09 33 09 34 09 35 15 81 25 7F 95
+06 75 08 81 02 05 09 19 01 29 10 15 00 25 01 95
+10 75 01 81 02 C0 C0
+
+
+==== Interface 2 report descriptor (164 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 01       Report ID (1)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 01       Input (Const,Array,Abs)
+95 05       Report Count (5)
+75 01       Report Size (1)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 05       Usage Maximum (Kana)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 03       Report Size (3)
+91 01       Output (Const,Array,Abs)
+95 06       Report Count (6)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+26 F1 00    Logical Maximum (241)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+2A F1 00    Usage Maximum (Key 0xF1)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 02       Report ID (2)
+75 10       Report Size (16)
+95 01       Report Count (1)
+15 01       Logical Minimum (1)
+26 8C 03    Logical Maximum (908)
+19 01       Usage Minimum (Consumer Control)
+2A 8C 03    Usage Maximum (0x38C)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 80     Usage (System Control)
+A1 01     Collection (Application)
+85 06       Report ID (6)
+09 81       Usage (System Power Down)
+09 82       Usage (System Sleep)
+09 83       Usage (System Wake Up)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+19 01       Usage Minimum (Pointer)
+29 03       Usage Maximum (0x03)
+75 01       Report Size (1)
+95 03       Report Count (3)
+81 02       Input (Data,Var,Abs)
+95 05       Report Count (5)
+81 01       Input (Const,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+85 0C       Report ID (12)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+19 00       Usage Minimum (No event)
+29 98       Usage Maximum (Key 0x98)
+75 01       Report Size (1)
+95 98       Report Count (152)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 85 01 05 07 19 E0 29 E7 15 00
+25 01 75 01 95 08 81 02 95 01 75 08 81 01 95 05
+75 01 05 08 19 01 29 05 91 02 95 01 75 03 91 01
+95 06 75 08 15 00 26 F1 00 05 07 19 00 2A F1 00
+81 00 C0 05 0C 09 01 A1 01 85 02 75 10 95 01 15
+01 26 8C 03 19 01 2A 8C 03 81 00 C0 05 01 09 80
+A1 01 85 06 09 81 09 82 09 83 15 00 25 01 19 01
+29 03 75 01 95 03 81 02 95 05 81 01 C0 05 01 09
+06 A1 01 85 0C 05 07 19 E0 29 E7 15 00 25 01 75
+01 95 08 81 02 15 00 25 01 19 00 29 98 75 01 95
+98 81 02 C0
+
+
+==== Interface 3 report descriptor (34 bytes) ====
+
+06 60 FF  Usage Page (Vendor-defined 0xFF60)
+09 61     Usage (0x61)
+A1 01     Collection (Application)
+09 62       Usage (0x62)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+95 20       Report Count (32)
+75 08       Report Size (8)
+81 02       Input (Data,Var,Abs)
+09 63       Usage (0x63)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+95 20       Report Count (32)
+75 08       Report Size (8)
+91 02       Output (Data,Var,Abs)
+C0        End Collection
+
+Hex:
+06 60 FF 09 61 A1 01 09 62 15 00 26 FF 00 95 20
+75 08 81 02 09 63 15 00 26 FF 00 95 20 75 08 91
+02 C0
+
+
+==== Sample input reports (recorded from the device, in order) ====
+
+Interface 1: 54 E2 01 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Interface 2: 01 00 00 00 00 00 00 00 00
+Interface 1: 54 E2 01 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Interface 2: 01 00 00 07 00 00 00 00 00
+Interface 2: 01 00 00 07 09 00 00 00 00
+Interface 2: 01 00 00 00 09 00 00 00 00
+Interface 2: 01 00 00 19 00 00 00 00 00
+Interface 2: 01 00 00 0E 00 00 00 00 00
+Interface 2: 01 00 00 0E 07 00 00 00 00
+Interface 2: 01 00 00 0E 07 09 00 00 00
+Interface 2: 01 00 00 0E 07 09 0D 00 00
+Interface 2: 01 00 00 00 07 09 0D 00 00
+Interface 2: 01 00 00 00 00 09 0D 00 00
+Interface 2: 01 00 00 00 00 09 00 00 00
+Interface 2: 01 00 00 0F 00 00 00 00 00
+Interface 2: 01 00 00 0F 0E 00 00 00 00
+Interface 2: 01 00 00 0F 0E 1D 00 00 00
+Interface 2: 01 00 00 0F 0E 1D 07 00 00
+Interface 2: 01 00 00 00 0E 1D 07 00 00
+Interface 2: 01 00 00 00 0E 00 07 00 00
+Interface 2: 01 00 00 00 00 00 07 00 00
+Interface 2: 01 00 00 11 00 00 07 00 00
+Interface 2: 01 00 00 11 0D 00 07 00 00
