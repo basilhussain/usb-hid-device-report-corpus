@@ -1,0 +1,47 @@
+Google Pixel USB-C earbuds (headset buttons) (no keyboard or mouse)
+
+VID:PID    18D1:5033
+Type       Real device
+Source     https://android.googlesource.com/platform/cts/+/refs/heads/main/tests/tests/hardware/res/raw/google_pixelusbcearbuds_register.json
+
+Notes
+  - Not a keyboard or mouse. A host looking for keyboards and mice should ignore it.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+
+
+==== Interface 0 report descriptor (51 bytes) ====
+
+05 0C     Usage Page (Consumer)
+09 01     Usage (Consumer Control)
+A1 01     Collection (Application)
+85 01       Report ID (1)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 02       Report Count (2)
+09 E9       Usage (Volume Increment)
+09 EA       Usage (Volume Decrement)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+09 CD       Usage (Play/Pause)
+81 02       Input (Data,Var,Abs)
+95 05       Report Count (5)
+81 01       Input (Const,Array,Abs)
+85 04       Report ID (4)
+09 00       Usage (0x00)
+75 08       Report Size (8)
+95 26       Report Count (38)
+91 02       Output (Data,Var,Abs)
+85 05       Report ID (5)
+09 00       Usage (0x00)
+95 22       Report Count (34)
+81 02       Input (Data,Var,Abs)
+C0        End Collection
+
+Hex:
+05 0C 09 01 A1 01 85 01 15 00 25 01 75 01 95 02
+09 E9 09 EA 81 02 95 01 09 CD 81 02 95 05 81 01
+85 04 09 00 75 08 95 26 91 02 85 05 09 00 95 22
+81 02 C0

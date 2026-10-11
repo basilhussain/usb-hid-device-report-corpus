@@ -1,0 +1,102 @@
+Sony DualShock 3 (USB) (no keyboard or mouse)
+
+VID:PID    054C:0268
+Type       Real device
+Source     https://android.googlesource.com/platform/cts/+/refs/heads/main/tests/tests/hardware/res/raw/sony_dualshock3_usb_register.json
+
+Notes
+  - Not a keyboard or mouse. A host looking for keyboards and mice should ignore it.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+
+
+==== Interface 0 report descriptor (148 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 04     Usage (Joystick)
+A1 01     Collection (Application)
+A1 02       Collection (Logical)
+85 01         Report ID (1)
+75 08         Report Size (8)
+95 01         Report Count (1)
+15 00         Logical Minimum (0)
+26 FF 00      Logical Maximum (255)
+81 03         Input (Const,Var,Abs)
+75 01         Report Size (1)
+95 13         Report Count (19)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+35 00         Physical Minimum (0)
+45 01         Physical Maximum (1)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 13         Usage Maximum (Button 19)
+81 02         Input (Data,Var,Abs)
+75 01         Report Size (1)
+95 0D         Report Count (13)
+06 00 FF      Usage Page (Vendor-defined 0xFF00)
+81 03         Input (Const,Var,Abs)
+15 00         Logical Minimum (0)
+26 FF 00      Logical Maximum (255)
+05 01         Usage Page (Generic Desktop)
+09 01         Usage (Pointer)
+A1 00         Collection (Physical)
+75 08           Report Size (8)
+95 04           Report Count (4)
+35 00           Physical Minimum (0)
+46 FF 00        Physical Maximum (255)
+09 30           Usage (X)
+09 31           Usage (Y)
+09 32           Usage (Z)
+09 35           Usage (Rz)
+81 02           Input (Data,Var,Abs)
+C0            End Collection
+05 01         Usage Page (Generic Desktop)
+75 08         Report Size (8)
+95 27         Report Count (39)
+09 01         Usage (Pointer)
+81 02         Input (Data,Var,Abs)
+75 08         Report Size (8)
+95 30         Report Count (48)
+09 01         Usage (Pointer)
+91 02         Output (Data,Var,Abs)
+75 08         Report Size (8)
+95 30         Report Count (48)
+09 01         Usage (Pointer)
+B1 02         Feature (Data,Var,Abs)
+C0          End Collection
+A1 02       Collection (Logical)
+85 02         Report ID (2)
+75 08         Report Size (8)
+95 30         Report Count (48)
+09 01         Usage (Pointer)
+B1 02         Feature (Data,Var,Abs)
+C0          End Collection
+A1 02       Collection (Logical)
+85 EE         Report ID (238)
+75 08         Report Size (8)
+95 30         Report Count (48)
+09 01         Usage (Pointer)
+B1 02         Feature (Data,Var,Abs)
+C0          End Collection
+A1 02       Collection (Logical)
+85 EF         Report ID (239)
+75 08         Report Size (8)
+95 30         Report Count (48)
+09 01         Usage (Pointer)
+B1 02         Feature (Data,Var,Abs)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 04 A1 01 A1 02 85 01 75 08 95 01 15 00
+26 FF 00 81 03 75 01 95 13 15 00 25 01 35 00 45
+01 05 09 19 01 29 13 81 02 75 01 95 0D 06 00 FF
+81 03 15 00 26 FF 00 05 01 09 01 A1 00 75 08 95
+04 35 00 46 FF 00 09 30 09 31 09 32 09 35 81 02
+C0 05 01 75 08 95 27 09 01 81 02 75 08 95 30 09
+01 91 02 75 08 95 30 09 01 B1 02 C0 A1 02 85 02
+75 08 95 30 09 01 B1 02 C0 A1 02 85 EE 75 08 95
+30 09 01 B1 02 C0 A1 02 85 EF 75 08 95 30 09 01
+B1 02 C0 C0

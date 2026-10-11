@@ -1,0 +1,131 @@
+Deeply nested collections (kernel selftest TestCollectionOverflow)
+
+VID:PID    xxxx:xxxx (none, not a real device)
+Type       Synthetic test descriptor (not a real device)
+Source     https://github.com/torvalds/linux/blob/master/tools/testing/selftests/hid/tests/test_hid_core.py
+
+Notes
+  - Many nested collections inside a mouse application collection. A parser must not crash or
+    overflow its collection stack.
+  - A parser that loses track of the nesting can end up with a mouse whose report size is 0.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 8 bytes
+
+
+==== Interface 0 report descriptor (181 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+09 02       Usage (Mouse)
+A1 02       Collection (Logical)
+09 01         Usage (Pointer)
+A1 00         Collection (Physical)
+05 09           Usage Page (Button)
+19 01           Usage Minimum (Button 1)
+29 03           Usage Maximum (Button 3)
+15 00           Logical Minimum (0)
+25 01           Logical Maximum (1)
+75 01           Report Size (1)
+95 03           Report Count (3)
+81 02           Input (Data,Var,Abs)
+75 05           Report Size (5)
+95 01           Report Count (1)
+81 03           Input (Const,Var,Abs)
+A1 02           Collection (Logical)
+09 01             Usage (Button 1)
+A1 02             Collection (Logical)
+09 01               Usage (Button 1)
+A1 02               Collection (Logical)
+09 01                 Usage (Button 1)
+A1 02                 Collection (Logical)
+09 01                   Usage (Button 1)
+A1 02                   Collection (Logical)
+09 01                     Usage (Button 1)
+A1 02                     Collection (Logical)
+09 01                       Usage (Button 1)
+A1 02                       Collection (Logical)
+09 01                         Usage (Button 1)
+A1 02                         Collection (Logical)
+09 01                           Usage (Button 1)
+A1 02                           Collection (Logical)
+09 01                             Usage (Button 1)
+A1 02                             Collection (Logical)
+09 01                               Usage (Button 1)
+A1 02                               Collection (Logical)
+09 01                                 Usage (Button 1)
+A1 02                                 Collection (Logical)
+09 01                                   Usage (Button 1)
+A1 02                                   Collection (Logical)
+09 01                                     Usage (Button 1)
+A1 02                                     Collection (Logical)
+09 01                                       Usage (Button 1)
+A1 02                                       Collection (Logical)
+09 01                                         Usage (Button 1)
+A1 02                                         Collection (Logical)
+09 01                                           Usage (Button 1)
+A1 02                                           Collection (Logical)
+09 01                                             Usage (Button 1)
+05 01                                             Usage Page (Generic Desktop)
+09 30                                             Usage (X)
+09 31                                             Usage (Y)
+15 81                                             Logical Minimum (-127)
+25 7F                                             Logical Maximum (127)
+75 08                                             Report Size (8)
+95 02                                             Report Count (2)
+81 06                                             Input (Data,Var,Rel)
+A1 02                                             Collection (Logical)
+85 12                                               Report ID (18)
+09 48                                               Usage (Resolution Multiplier)
+95 01                                               Report Count (1)
+75 02                                               Report Size (2)
+15 00                                               Logical Minimum (0)
+25 01                                               Logical Maximum (1)
+35 01                                               Physical Minimum (1)
+45 0C                                               Physical Maximum (12)
+B1 02                                               Feature (Data,Var,Abs)
+85 1A                                               Report ID (26)
+09 38                                               Usage (Wheel)
+35 00                                               Physical Minimum (0)
+45 00                                               Physical Maximum (0)
+95 01                                               Report Count (1)
+75 10                                               Report Size (16)
+16 01 80                                            Logical Minimum (-32767)
+26 FF 7F                                            Logical Maximum (32767)
+81 06                                               Input (Data,Var,Rel)
+C0                                                End Collection
+C0                                              End Collection
+C0                                            End Collection
+C0                                          End Collection
+C0                                        End Collection
+C0                                      End Collection
+C0                                    End Collection
+C0                                  End Collection
+C0                                End Collection
+C0                              End Collection
+C0                            End Collection
+C0                          End Collection
+C0                        End Collection
+C0                      End Collection
+C0                    End Collection
+C0                  End Collection
+C0                End Collection
+C0              End Collection
+C0            End Collection
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 02 A1 01 09 02 A1 02 09 01 A1 00 05 09
+19 01 29 03 15 00 25 01 75 01 95 03 81 02 75 05
+95 01 81 03 A1 02 09 01 A1 02 09 01 A1 02 09 01
+A1 02 09 01 A1 02 09 01 A1 02 09 01 A1 02 09 01
+A1 02 09 01 A1 02 09 01 A1 02 09 01 A1 02 09 01
+A1 02 09 01 A1 02 09 01 A1 02 09 01 A1 02 09 01
+A1 02 09 01 A1 02 09 01 05 01 09 30 09 31 15 81
+25 7F 75 08 95 02 81 06 A1 02 85 12 09 48 95 01
+75 02 15 00 25 01 35 01 45 0C B1 02 85 1A 09 38
+35 00 45 00 95 01 75 10 16 01 80 26 FF 7F 81 06
+C0 C0 C0 C0 C0 C0 C0 C0 C0 C0 C0 C0 C0 C0 C0 C0
+C0 C0 C0 C0 C0

@@ -1,0 +1,124 @@
+UC-Logic A640 tablet, mouse interface (5543:0061)
+
+VID:PID    5543:0061
+Type       Real device
+Source     https://gitlab.freedesktop.org/libinput/libinput/-/issues/699
+
+Notes
+  - Graphics tablet that presents its pen as an absolute Mouse collection after a vendor collection.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+  The source gave only the report descriptors. Subclass and protocol were inferred from them (a
+  descriptor that starts with a Keyboard or Mouse collection and has no report IDs was taken as a
+  boot interface), and endpoint sizes were assumed.
+
+
+==== Interface 0 report descriptor (190 bytes) ====
+
+06 07 FF  Usage Page (Vendor-defined 0xFF07)
+09 00     Usage (0x00)
+A1 01     Collection (Application)
+85 07       Report ID (7)
+09 20       Usage (0x20)
+A1 00       Collection (Physical)
+09 42         Usage (0x42)
+09 44         Usage (0x44)
+09 45         Usage (0x45)
+09 3C         Usage (0x3C)
+09 43         Usage (0x43)
+09 44         Usage (0x44)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+75 01         Report Size (1)
+95 06         Report Count (6)
+81 02         Input (Data,Var,Abs)
+09 32         Usage (0x32)
+75 01         Report Size (1)
+95 01         Report Count (1)
+81 02         Input (Data,Var,Abs)
+81 03         Input (Const,Var,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+75 10         Report Size (16)
+95 01         Report Count (1)
+A4            Push
+55 0D         Unit Exponent (-3)
+65 13         Unit (English Linear: in)
+35 00         Physical Minimum (0)
+46 C6 16      Physical Maximum (5830)
+26 B0 73      Logical Maximum (29616)
+81 42         Input (Data,Var,Abs,Null)
+09 31         Usage (Y)
+46 34 0D      Physical Maximum (3380)
+26 12 43      Logical Maximum (17170)
+81 42         Input (Data,Var,Abs,Null)
+B4            Pop
+05 0D         Usage Page (Digitizer)
+09 30         Usage (Tip Pressure)
+26 FF 1F      Logical Maximum (8191)
+46 FF 1F      Physical Maximum (8191)
+55 00         Unit Exponent (0)
+66 11 E1      Unit (SI Linear: cm g s^-2)
+75 10         Report Size (16)
+81 02         Input (Data,Var,Abs)
+09 3D         Usage (X Tilt)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 01         Report Count (1)
+81 02         Input (Data,Var,Abs)
+09 3E         Usage (Y Tilt)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+81 02         Input (Data,Var,Abs)
+C0          End Collection
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+85 09       Report ID (9)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 03         Usage Maximum (Button 3)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 03         Report Count (3)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+95 05         Report Count (5)
+81 01         Input (Const,Array,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+95 02         Report Count (2)
+75 10         Report Size (16)
+35 00         Physical Minimum (0)
+46 40 1F      Physical Maximum (8000)
+26 40 1F      Logical Maximum (8000)
+81 02         Input (Data,Var,Abs)
+05 0D         Usage Page (Digitizer)
+09 30         Usage (Tip Pressure)
+26 FF 1F      Logical Maximum (8191)
+46 FF 1F      Physical Maximum (8191)
+95 01         Report Count (1)
+75 10         Report Size (16)
+81 02         Input (Data,Var,Abs)
+C0          End Collection
+C0        End Collection
+
+Hex:
+06 07 FF 09 00 A1 01 85 07 09 20 A1 00 09 42 09
+44 09 45 09 3C 09 43 09 44 15 00 25 01 75 01 95
+06 81 02 09 32 75 01 95 01 81 02 81 03 05 01 09
+30 75 10 95 01 A4 55 0D 65 13 35 00 46 C6 16 26
+B0 73 81 42 09 31 46 34 0D 26 12 43 81 42 B4 05
+0D 09 30 26 FF 1F 46 FF 1F 55 00 66 11 E1 75 10
+81 02 09 3D 15 81 25 7F 75 08 95 01 81 02 09 3E
+15 81 25 7F 81 02 C0 C0 05 01 09 02 A1 01 85 09
+09 01 A1 00 05 09 19 01 29 03 15 00 25 01 95 03
+75 01 81 02 95 05 81 01 05 01 09 30 09 31 95 02
+75 10 35 00 46 40 1F 26 40 1F 81 02 05 0D 09 30
+26 FF 1F 46 FF 1F 95 01 75 10 81 02 C0 C0

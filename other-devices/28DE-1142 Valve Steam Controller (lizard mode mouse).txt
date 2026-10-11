@@ -1,0 +1,91 @@
+Valve Steam Controller (lizard mode mouse)
+
+VID:PID    28DE:1142
+Type       Real device
+Source     https://gitlab.freedesktop.org/libinput/libinput/-/issues/477
+
+Notes
+  - Without Steam running, the trackpad acts as a mouse and the buttons as keys: keyboard collection
+    (report 1) first, mouse (report 2) second, in one interface.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+  The source gave only the report descriptors. Subclass and protocol were inferred from them (a
+  descriptor that starts with a Keyboard or Mouse collection and has no report IDs was taken as a
+  boot interface), and endpoint sizes were assumed.
+
+
+==== Interface 0 report descriptor (121 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+95 01     Report Count (1)
+A1 01     Collection (Application)
+85 01       Report ID (1)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 01       Input (Const,Array,Abs)
+95 05       Report Count (5)
+75 01       Report Size (1)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 05       Usage Maximum (Kana)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 03       Report Size (3)
+91 01       Output (Const,Array,Abs)
+95 06       Report Count (6)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+25 65       Logical Maximum (101)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+29 65       Usage Maximum (Application)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+05 01     Usage Page (Generic Desktop)
+09 02     Usage (Mouse)
+A1 01     Collection (Application)
+85 02       Report ID (2)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+05 09         Usage Page (Button)
+19 01         Usage Minimum (Button 1)
+29 05         Usage Maximum (Button 5)
+15 00         Logical Minimum (0)
+25 01         Logical Maximum (1)
+95 05         Report Count (5)
+75 01         Report Size (1)
+81 02         Input (Data,Var,Abs)
+95 01         Report Count (1)
+75 03         Report Size (3)
+81 01         Input (Const,Array,Abs)
+05 01         Usage Page (Generic Desktop)
+09 30         Usage (X)
+09 31         Usage (Y)
+09 38         Usage (Wheel)
+15 81         Logical Minimum (-127)
+25 7F         Logical Maximum (127)
+75 08         Report Size (8)
+95 03         Report Count (3)
+81 06         Input (Data,Var,Rel)
+C0          End Collection
+C0        End Collection
+
+Hex:
+05 01 09 06 95 01 A1 01 85 01 05 07 19 E0 29 E7
+15 00 25 01 75 01 95 08 81 02 95 01 75 08 81 01
+95 05 75 01 05 08 19 01 29 05 91 02 95 01 75 03
+91 01 95 06 75 08 15 00 25 65 05 07 19 00 29 65
+81 00 C0 05 01 09 02 A1 01 85 02 09 01 A1 00 05
+09 19 01 29 05 15 00 25 01 95 05 75 01 81 02 95
+01 75 03 81 01 05 01 09 30 09 31 09 38 15 81 25
+7F 75 08 95 03 81 06 C0 C0

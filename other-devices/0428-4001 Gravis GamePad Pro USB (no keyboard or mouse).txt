@@ -1,0 +1,47 @@
+Gravis GamePad Pro USB (no keyboard or mouse)
+
+VID:PID    0428:4001
+Type       Real device
+Source     https://android.googlesource.com/platform/cts/+/refs/heads/main/tests/tests/hardware/res/raw/gravis_gamepadprousb_register.json
+
+Notes
+  - Not a keyboard or mouse. A host looking for keyboards and mice should ignore it.
+
+Interfaces
+  Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
+
+
+==== Interface 0 report descriptor (51 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 05     Usage (Game Pad)
+A1 01     Collection (Application)
+05 01       Usage Page (Generic Desktop)
+09 01       Usage (Pointer)
+A1 00       Collection (Physical)
+09 30         Usage (X)
+09 31         Usage (Y)
+15 00         Logical Minimum (0)
+26 FF 00      Logical Maximum (255)
+75 08         Report Size (8)
+95 02         Report Count (2)
+81 02         Input (Data,Var,Abs)
+C0          End Collection
+05 09       Usage Page (Button)
+19 01       Usage Minimum (Button 1)
+29 0A       Usage Maximum (Button 10)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 0A       Report Count (10)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 06       Report Size (6)
+81 01       Input (Const,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 05 A1 01 05 01 09 01 A1 00 09 30 09 31
+15 00 26 FF 00 75 08 95 02 81 02 C0 05 09 19 01
+29 0A 15 00 25 01 75 01 95 0A 81 02 95 01 75 06
+81 01 C0
