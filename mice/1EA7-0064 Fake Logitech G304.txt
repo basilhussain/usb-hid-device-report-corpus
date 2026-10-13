@@ -9,7 +9,7 @@ Notes
   - Apparently has buggy Boot mode implementation; continues to send Report format reports after Boot mode has been set.
 
 Interfaces
-  Interface 0: 1 endpoint, class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 8 bytes
+  Interface 0: class 03 (HID), subclass 01 (boot), protocol 02 (mouse), endpoint max packet 8 bytes
 
 
 ==== Configuration descriptor (34 bytes) ====
