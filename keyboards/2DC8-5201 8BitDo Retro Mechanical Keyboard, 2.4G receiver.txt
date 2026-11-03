@@ -29,6 +29,11 @@ Notes
     keyboard interfaces are enumerated.
   - Interface subclass/protocol are not in the dump; all set to 0/0 here (every collection has a
     report ID, so none is in the boot format).
+  - Interface 2's HID descriptor is potentially invalid. The System Control collection (Report ID 6)
+    defines for 3 input fields both 3 explicit Usages (Sleep, Power Down, Wake Up) *and* a Min/Max
+	range of 3 Usages (0x1-0x3). The standard is not clear over whether this allowed. The range is
+	likely an erroneous inclusion because it specifies Usages that don't make sense in that context:
+	0x1/0x2 are for Collections, and 0x3 is reserved.
 
 Interfaces
   Interface 0: class 03 (HID), subclass 00, protocol 00, endpoint max packet 64 bytes
