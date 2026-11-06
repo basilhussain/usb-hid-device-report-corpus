@@ -1,0 +1,140 @@
+Lenovo 'Calliope' SK-8823 (17EF:608C)
+
+VID:PID    17EF:608C
+Type       Real device
+Source     Dumped from device, 2026 (exact bytes)
+
+Notes
+  - Device manufacturer string indicates that OEM is LiteOn.
+  - Device product string describes it as a "Calliope" keyboard, but this name does not appear anywhere
+    on the device's markings, so may be a product code-name, or OEM name.
+  - Interface 1's Report ID 2 appears to describe the keyboard's special function keys (accessed via
+    Fn + F-key combos). But some are defined as generic Button controls rather than a specific purpose.
+    Physical labelling for these controls is as follows (assuming Usages are in same order as physical
+    keys):
+      - Button 17: microphone with strikethrough line (microphone mute?)
+      - Button 38: gear symbol (system configuration or control panel?)
+      - Button 39: scissors over oval dotted-line shape (snip/screenshot?)
+      - Button 33: closed padlock symbol (lock desktop?)
+    The remaining Button 37, AL Local Machine Browser, and AL Calculator Usages have no corresponding
+    physical keys. None of these generic Button keys do anything on a base Windows 11 system; perhaps
+    requires proprietary Lenovo software to function.
+
+Interfaces
+  Interface 0: 1 endpoint, class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
+  Interface 1: 1 endpoint, class 03 (HID), subclass 00, protocol 00, endpoint max packet 8 bytes
+
+
+==== Configuration descriptor (59 bytes) ====
+
+09 02 3B 00 02 01 00 A0 32      Configuration 1: total length 59, 2 interfaces, bus-powered, remote wakeup, max power 100 mA
+  09 04 00 00 01 03 01 01 00    Interface 0: 1 endpoint, class 03 (HID), subclass 01 (boot), protocol 01 (keyboard)
+    09 21 11 01 00 01 22 41 00  HID 1.11, country code 0 (not localized), report descriptor 65 bytes
+    07 05 81 03 08 00 18        Endpoint 81 IN, interrupt, max packet 8, interval 24
+  09 04 01 00 01 03 00 00 00    Interface 1: 1 endpoint, class 03 (HID), subclass 00, protocol 00
+    09 21 11 01 00 01 22 6B 00  HID 1.11, country code 0 (not localized), report descriptor 107 bytes
+    07 05 82 03 08 00 30        Endpoint 82 IN, interrupt, max packet 8, interval 48
+
+Hex:
+09 02 3B 00 02 01 00 A0 32 09 04 00 00 01 03 01
+01 00 09 21 11 01 00 01 22 41 00 07 05 81 03 08
+00 18 09 04 01 00 01 03 00 00 00 09 21 11 01 00
+01 22 6B 00 07 05 82 03 08 00 30
+
+
+==== Interface 0 report descriptor (65 bytes) ====
+
+05 01     Usage Page (Generic Desktop)
+09 06     Usage (Keyboard)
+A1 01     Collection (Application)
+05 07       Usage Page (Keyboard)
+19 E0       Usage Minimum (Left Control)
+29 E7       Usage Maximum (Right GUI)
+15 00       Logical Minimum (0)
+25 01       Logical Maximum (1)
+75 01       Report Size (1)
+95 08       Report Count (8)
+81 02       Input (Data,Var,Abs)
+95 01       Report Count (1)
+75 08       Report Size (8)
+81 01       Input (Const,Array,Abs)
+95 03       Report Count (3)
+75 01       Report Size (1)
+05 08       Usage Page (LED)
+19 01       Usage Minimum (Num Lock)
+29 03       Usage Maximum (Scroll Lock)
+91 02       Output (Data,Var,Abs)
+95 01       Report Count (1)
+75 05       Report Size (5)
+91 01       Output (Const,Array,Abs)
+95 06       Report Count (6)
+75 08       Report Size (8)
+15 00       Logical Minimum (0)
+26 FF 00    Logical Maximum (255)
+05 07       Usage Page (Keyboard)
+19 00       Usage Minimum (No event)
+2A FF 00    Usage Maximum (Key 0xFF)
+81 00       Input (Data,Array,Abs)
+C0        End Collection
+
+Hex:
+05 01 09 06 A1 01 05 07 19 E0 29 E7 15 00 25 01
+75 01 95 08 81 02 95 01 75 08 81 01 95 03 75 01
+05 08 19 01 29 03 91 02 95 01 75 05 91 01 95 06
+75 08 15 00 26 FF 00 05 07 19 00 2A FF 00 81 00
+C0
+
+
+==== Interface 1 report descriptor (107 bytes) ====
+
+05 01           Usage Page (Generic Desktop)
+09 80           Usage (System Control)
+A1 01           Collection (Application)
+85 01             Report ID (1)
+19 81             Usage Minimum (System Power Down)
+29 83             Usage Maximum (System Wake Up)
+15 00             Logical Minimum (0)
+25 01             Logical Maximum (1)
+75 01             Report Size (1)
+95 03             Report Count (3)
+81 02             Input (Data,Var,Abs)
+95 05             Report Count (5)
+81 01             Input (Const,Array,Abs)
+C0              End Collection
+06 0C 00        Usage Page (Consumer)
+09 01           Usage (Consumer Control)
+A1 01           Collection (Application)
+85 02             Report ID (2)
+25 01             Logical Maximum (1)
+15 00             Logical Minimum (0)
+75 01             Report Size (1)
+0A E2 00          Usage (Mute)
+0A EA 00          Usage (Volume Decrement)
+0A E9 00          Usage (Volume Increment)
+0B 11 00 09 00    Usage (Button: Button 17)
+0A CD 00          Usage (Play/Pause)
+0A B7 00          Usage (Stop)
+0A B6 00          Usage (Scan Previous Track)
+0A B5 00          Usage (Scan Next Track)
+95 08             Report Count (8)
+81 02             Input (Data,Var,Abs)
+0B 26 00 09 00    Usage (Button: Button 38)
+0B 27 00 09 00    Usage (Button: Button 39)
+0B 21 00 09 00    Usage (Button: Button 33)
+0B 25 00 09 00    Usage (Button: Button 37)
+0A 94 01          Usage (AL Local Machine Browser)
+0A 92 01          Usage (AL Calculator)
+95 06             Report Count (6)
+81 02             Input (Data,Var,Abs)
+95 02             Report Count (2)
+81 01             Input (Const,Array,Abs)
+C0              End Collection
+
+Hex:
+05 01 09 80 A1 01 85 01 19 81 29 83 15 00 25 01
+75 01 95 03 81 02 95 05 81 01 C0 06 0C 00 09 01
+A1 01 85 02 25 01 15 00 75 01 0A E2 00 0A EA 00
+0A E9 00 0B 11 00 09 00 0A CD 00 0A B7 00 0A B6
+00 0A B5 00 95 08 81 02 0B 26 00 09 00 0B 27 00
+09 00 0B 21 00 09 00 0B 25 00 09 00 0A 94 01 0A
+92 01 95 06 81 02 95 02 81 01 C0
