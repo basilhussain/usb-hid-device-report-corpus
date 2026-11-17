@@ -100,7 +100,21 @@ DIGITIZER = {
     0x59: 'Pad Type', 0x5B: 'Transducer Serial Number', 0x5C: 'Preferred Color',
 }
 
-USAGES = {0x01: GENERIC_DESKTOP, 0x07: KEYBOARD, 0x08: LED, 0x0C: CONSUMER, 0x0D: DIGITIZER}
+LIGHTING = {
+    0x01: 'Lamp Array', 0x02: 'Lamp Array Attributes Report', 0x03: 'Lamp Count',
+    0x04: 'Bounding Box Width In Micrometers', 0x05: 'Bounding Box Height In Micrometers',
+    0x06: 'Bounding Box Depth In Micrometers', 0x07: 'Lamp Array Kind', 0x08: 'Min Update Interval In Microseconds',
+    0x20: 'Lamp Attributes Request Report', 0x21: 'Lamp Id', 0x22: 'Lamp Attributes Response Report',
+    0x23: 'Position X In Micrometers', 0x24: 'Position Y In Micrometers', 0x25: 'Position Z In Micrometers',
+    0x26: 'Lamp Purposes', 0x27: 'Update Latency In Microseconds', 0x28: 'Red Level Count', 0x29: 'Green Level Count',
+    0x2A: 'Blue Level Count', 0x2B: 'Intensity Level Count', 0x2C: 'Is Programmable', 0x2D: 'Input Binding',
+    0x50: 'Lamp Multi Update Report', 0x51: 'Red Update Channel', 0x52: 'Green Update Channel',
+    0x53: 'Blue Update Channel', 0x54: 'Intensity Update Channel', 0x55: 'Lamp Update Flags',
+    0x60: 'Lamp Range Update Report', 0x61: 'Lamp Id Start', 0x62: 'Lamp Id End', 0x70: 'Lamp Array Control Report',
+    0x71: 'Autonomous Mode',
+}
+
+USAGES = {0x01: GENERIC_DESKTOP, 0x07: KEYBOARD, 0x08: LED, 0x0C: CONSUMER, 0x0D: DIGITIZER, 0x59: LIGHTING}
 
 COLLECTIONS = {0: 'Physical', 1: 'Application', 2: 'Logical', 3: 'Report', 4: 'Named Array', 5: 'Usage Switch',
                6: 'Usage Modifier'}
