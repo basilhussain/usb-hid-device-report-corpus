@@ -8,6 +8,8 @@ Notes
   - The keyboard sits behind its own built-in hub (2 USB ports; with the keyboard itself, 3 USB
     addresses). The A1242/A1243 aluminum keyboards are the same design. Interface 0: boot keyboard;
     interface 1: consumer keys. Reports are from interface 0 in boot protocol.
+  - Interface 1's report descriptor has a few flaws: despite all inputs being on/off (Logical Min/Max
+    of 0 and 1), several are specified as Relative (should be Absolute).
 
 Interfaces
   Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
