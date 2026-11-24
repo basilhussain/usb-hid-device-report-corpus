@@ -9,8 +9,6 @@ Notes
     1 has consumer (report 1) and system control (report 2) keys.
   - The product ID and interface subclass/protocol were not in the report; interface 0 is assumed to
     be a boot keyboard interface (subclass 1, protocol 1), as usual for SONiX keyboards.
-  - The System Control input in report ID 2 of interface 1 is inappropriately specified as Relative,
-    when it should be Absolute. A Relative input doesn't make sense for an on/off value.
 
 Interfaces
   Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 64 bytes
