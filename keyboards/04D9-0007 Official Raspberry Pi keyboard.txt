@@ -4,11 +4,6 @@ VID:PID    04D9:0007
 Type       Real device
 Source     https://github.com/Gadgetoid/pi400kb/issues/7
 
-Notes
-  - Several Consumer Control inputs of interface 1 (Play/Pause, Eject, Mute) are inappropriately
-    specified as Relative, when they should be Absolute. A Relative input doesn't make sense for
-    an on/off value.
-
 Interfaces
   Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
   Interface 1: class 03 (HID), subclass 00, protocol 00, endpoint max packet 8 bytes
