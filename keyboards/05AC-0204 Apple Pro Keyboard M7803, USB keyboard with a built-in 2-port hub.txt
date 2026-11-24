@@ -8,9 +8,6 @@ Notes
   - The keyboard sits behind its own built-in hub (2 USB ports), so a mouse plugged into it is two
     hub levels down when the keyboard is on a hub. Interface 0: boot keyboard; interface 1: consumer
     keys (volume, eject; bInterval 255). Reports are from interface 0 in boot protocol.
-  - Interface 1's report descriptor has several flaws: despite all inputs being on/off (Logical
-    Min/Max of 0 and 1), several are specified as Relative (should be Absolute) and two as No
-    Preferred State (which would be physically impossible for a push button).
 
 Interfaces
   Interface 0: class 03 (HID), subclass 01 (boot), protocol 01 (keyboard), endpoint max packet 8 bytes
